@@ -1,5 +1,7 @@
 package com.hanghae.chat_circle.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,4 +43,8 @@ public class Post extends Timestamped {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User user;
+
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OrderBy("id asc")
+	private List<Comment> comments = new ArrayList<>();
 }

@@ -43,7 +43,6 @@ public class User {
 	@Column
 	private boolean isDeleted = Boolean.FALSE;
 
-
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Post> post = new ArrayList<>();
 
