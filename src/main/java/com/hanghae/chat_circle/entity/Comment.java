@@ -25,7 +25,7 @@ public class Comment extends Timestamped {
 	@Column(name = "COMMENT_ID")
 	private Long id;
 
-	private String content;
+	private String comment;
 
 	@Column
 	private boolean isDeleted = Boolean.FALSE;
@@ -38,13 +38,13 @@ public class Comment extends Timestamped {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User user;
 
-	public Comment(String content, Post post, User user) {
-		this.content = content;
+	public Comment(String comment, Post post, User user) {
+		this.comment = comment;
 		this.post = post;
 		this.user = user;
 	}
 
-	public void update(String content) {
-		this.content = content;
+	public void update(String comment) {
+		this.comment = comment;
 	}
 }
